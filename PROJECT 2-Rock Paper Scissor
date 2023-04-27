@@ -1,0 +1,47 @@
+import random
+
+def play_game():
+    print("Welcome to Rock-Paper-Scissors!")
+    player_score = 0
+    computer_score = 0
+    
+    while True:
+        print("Choose an option:")
+        print("1. Rock")
+        print("2. Paper")
+        print("3. Scissors")
+        print("4. Quit")
+        
+        player_choice = int(input("Enter your choice: "))
+        
+        if player_choice == 4:
+            break
+        
+        if player_choice < 1 or player_choice > 3:
+            print("Invalid choice. Please try again.")
+            continue
+        
+        options = ["rock", "paper", "scissors"]
+        computer_choice = random.choice(options)
+        
+        player_choice_text = options[player_choice - 1]
+        print(f"You chose {player_choice_text}. The computer chose {computer_choice}.")
+        
+        if player_choice_text == computer_choice:
+            print("It's a tie!")
+        elif player_choice_text == "rock" and computer_choice == "scissors":
+            print("You win!")
+            player_score += 1
+        elif player_choice_text == "paper" and computer_choice == "rock":
+            print("You win!")
+            player_score += 1
+        elif player_choice_text == "scissors" and computer_choice == "paper":
+            print("You win!")
+            player_score += 1
+        else:
+            print("Computer wins!")
+            computer_score += 1
+            
+        print(f"Score: Player {player_score}, Computer {computer_score}")
+        
+    print("Thanks for playing!")
