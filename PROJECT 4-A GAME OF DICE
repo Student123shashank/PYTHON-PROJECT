@@ -1,0 +1,31 @@
+import random       
+def throw_dice():
+    dice_1 = random.randint(1, 6)
+    dice_2 = random.randint(1, 6)
+    print(f"You threw {dice_1} and {dice_2}")
+    return dice_1 + dice_2
+def play_game():
+    total_score = 0
+    dice_in_pile = []
+    while True:
+        current_score = throw_dice()
+        if current_score == 7:
+            print("You rolled a 7! Game over.")
+            break
+        else:
+            total_score += current_score
+            dice_in_pile.append(current_score)
+            print(f"Your current score is {total_score}")
+            choice = input("Do you want to keep the dice in the pile? (y/n): ")
+            if choice.lower() == "n":
+                total_score = 0
+                dice_in_pile = []
+                print("You lost all your points!")
+                break
+            elif choice.lower() != "y":
+                print("Invalid input. Please try again.")
+                continue
+            print(f"Your dice pile now has {len(dice_in_pile)} dice and a total score of {total_score}")
+    print("Game over. Thanks for playing!")
+
+play_game()
